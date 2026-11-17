@@ -58,4 +58,37 @@ public class StudentService : IStudentService
         };
     }
 
+    public async Task<StudentDto?> UpdateStudentAsync(
+        int studentId,
+        UpdateStudentRequest request)
+    {
+        var student = await _studentRepository.GetStudentByIdAsync(studentId);
+
+        if (student is null)
+        {
+            return null;
+        }
+
+        student.RegisterNumber = request.RegisterNumber;
+        student.FirstName = request.FirstName;
+        student.LastName = request.LastName;
+        student.Email = request.Email;
+        student.DepartmentName = request.DepartmentName;
+        student.IsActive = request.IsActive;
+
+        await _studentRepository.UpdateStudentAsync(student);
+
+        return new StudentDto
+        {
+            StudentId = student.StudentId,
+            RegisterNumber = student.RegisterNumber,
+            FirstName = student.FirstName,
+            LastName = student.LastName,
+            Email = student.Email,
+            DepartmentName = student.DepartmentName,
+            IsActive = student.IsActive
+        };
+    }
+
+
 }

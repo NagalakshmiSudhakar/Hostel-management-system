@@ -1,22 +1,4 @@
-.students-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
 
-  button {
-    background: #2563eb;
-    color: white;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background: #1d4ed8;
-  }
-}
 .form-container {
   max-width: 650px;
   margin: 20px auto;

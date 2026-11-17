@@ -8,4 +8,9 @@ public interface IStudentRepository
     Task<List<Student>> GetAllStudentsAsync();
 
     Task AddStudentAsync(Student student);
+
+    Task<Student?> GetStudentByIdAsync(int studentId);
+
+    Task UpdateStudentAsync(Student student);
+
 }

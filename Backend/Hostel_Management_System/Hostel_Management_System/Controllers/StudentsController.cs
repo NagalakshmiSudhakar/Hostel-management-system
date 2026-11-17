@@ -34,4 +34,23 @@ public class StudentsController : ControllerBase
         return StatusCode(StatusCodes.Status201Created, student);
     }
 
+    [HttpPut("{studentId:int}")]
+    public async Task<IActionResult> UpdateStudent(
+        int studentId,
+        [FromBody] UpdateStudentRequest request)
+    {
+        var student = await _studentService.UpdateStudentAsync(
+            studentId, request);
+
+        if (student is null)
+        {
+            return NotFound(new
+            {
+                message = $"Student with ID {studentId} was not found."
+            });
+        }
+
+        return Ok(student);
+    }
+
 }

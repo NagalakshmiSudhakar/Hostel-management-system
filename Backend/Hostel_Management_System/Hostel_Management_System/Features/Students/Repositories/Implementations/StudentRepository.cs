@@ -29,4 +29,18 @@ public class StudentRepository : IStudentRepository
         await _context.SaveChangesAsync();
     }
 
+    public async Task<Student?> GetStudentByIdAsync(int studentId)
+    {
+        return await _context.Students
+            .FirstOrDefaultAsync(s => s.StudentId == studentId);
+    }
+
+    public async Task UpdateStudentAsync(Student student)
+    {
+        _context.Students.Update(student);
+
+        await _context.SaveChangesAsync();
+    }
+
+
 }
