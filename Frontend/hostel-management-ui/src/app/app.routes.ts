@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { AdminLayoutComponent } from './features/admin/layout/admin-layout/admin-layout';
 import { StudentsListComponent } from './features/students/pages/students-list/students-list';
 import { Dashboard } from './features/admin/pages/dashboard/dashboard';
+import { StudentCreateComponent } from './features/students/pages/student-create/student-create';
 
 export const routes: Routes = [
   {
@@ -21,7 +22,11 @@ export const routes: Routes = [
         path: '',
         redirectTo: 'students',
         pathMatch: 'full'
-      }
+      },
+      {
+  path: 'students/create',
+  component: StudentCreateComponent
+},
     ]
   },
   {

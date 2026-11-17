@@ -1,5 +1,11 @@
 
-<h2>Students List</h2>
+<div class="students-header">
+  <h2>Students List</h2>
+
+  <button routerLink="/admin/students/create">
+    + Add Student
+  </button>
+</div>
 
 @if (isLoading) {
   <p>Loading students...</p>
