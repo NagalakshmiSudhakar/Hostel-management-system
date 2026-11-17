@@ -1,0 +1,24 @@
+# Backend
+**/bin/
+**/obj/
+**/publish/
+
+# Frontend
+**/node_modules/
+**/dist/
+**/.angular/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+appsettings.Development.json
+
+# Operating system
+Thumbs.db
+.DS_Store
