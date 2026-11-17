@@ -1,0 +1,24 @@
+﻿
+using Hostel_Management_System.Data;
+using Hostel_Management_System.Features.Students.Repositories.Interfaces;
+using Hostel_Management_System.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace Hostel_Management_System.Features.Students.Repositories.Implementations;
+
+public class StudentRepository : IStudentRepository
+{
+    private readonly ApplicationDbContext _context;
+
+    public StudentRepository(ApplicationDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<List<Student>> GetAllStudentsAsync()
+    {
+        return await _context.Students
+            .AsNoTracking()
+            .ToListAsync();
+    }
+}
