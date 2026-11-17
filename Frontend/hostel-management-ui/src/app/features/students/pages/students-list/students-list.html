@@ -1,0 +1,40 @@
+
+<h2>Students List</h2>
+
+@if (isLoading) {
+  <p>Loading students...</p>
+}
+
+@if (errorMessage) {
+  <p>{{ errorMessage }}</p>
+}
+
+@if (!isLoading && !errorMessage) {
+  <p>Total Students: {{ students.length }}</p>
+
+  <table border="1" cellpadding="10">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Register Number</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (student of students; track student.studentId) {
+        <tr>
+          <td>{{ student.studentId }}</td>
+          <td>{{ student.registerNumber }}</td>
+          <td>{{ student.firstName }} {{ student.lastName }}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ student.departmentName }}</td>
+          <td>{{ student.isActive ? 'Active' : 'Inactive' }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

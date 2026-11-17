@@ -21,4 +21,12 @@ public class StudentRepository : IStudentRepository
             .AsNoTracking()
             .ToListAsync();
     }
+
+    public async Task AddStudentAsync(Student student)
+    {
+        await _context.Students.AddAsync(student);
+
+        await _context.SaveChangesAsync();
+    }
+
 }

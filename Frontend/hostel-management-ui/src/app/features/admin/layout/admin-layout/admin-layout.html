@@ -1,0 +1,35 @@
+
+<div class="admin-container">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2 class="logo">Hostel Admin</h2>
+
+    <nav>
+      <a routerLink="/admin/dashboard">Dashboard</a>
+      <a routerLink="/admin/students">Students</a>
+      <a routerLink="/admin/rooms">Rooms</a>
+      <a routerLink="/admin/wardens">Wardens</a>
+      <a routerLink="/admin/allocations">Room Allocation</a>
+      <a routerLink="/admin/leaves">Leave Requests</a>
+      <a routerLink="/admin/complaints">Complaints</a>
+      <a routerLink="/admin/fees">Fees</a>
+      <a routerLink="/admin/visitors">Visitors</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <header class="topbar">
+      <h2>Admin Dashboard</h2>
+      <span>Administrator</span>
+    </header>
+
+    <section class="page-content">
+      <router-outlet></router-outlet>
+    </section>
+
+  </main>
+
+</div>

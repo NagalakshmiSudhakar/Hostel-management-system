@@ -1,4 +1,5 @@
 ﻿
+using Hostel_Management_System.Features.Students.DTOs;
 using Hostel_Management_System.Features.Students.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,4 +23,15 @@ public class StudentsController : ControllerBase
 
         return Ok(students);
     }
+
+
+    [HttpPost]
+    public async Task<IActionResult> CreateStudent(
+        [FromBody] CreateStudentRequest request)
+    {
+        var student = await _studentService.CreateStudentAsync(request);
+
+        return StatusCode(StatusCodes.Status201Created, student);
+    }
+
 }
