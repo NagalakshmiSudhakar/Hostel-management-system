@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "XKb6q6wm9bg=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\nagal\\OneDrive\\Desktop\\HCL TECH\\Hostel-management-system\\Backend\\Hostel_Management_System\\Hostel_Management_System\\Hostel_Management_System.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nagal\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.13\\microsoft.aspnetcore.openapi.10.0.13.nupkg.sha512",
+    "C:\\Users\\nagal\\.nuget\\packages\\microsoft.openapi\\2.12.2\\microsoft.openapi.2.12.2.nupkg.sha512"
+  ],
+  "logs": []
+}
