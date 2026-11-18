@@ -16,6 +16,7 @@ public class StudentsController : ControllerBase
         _studentService = studentService;
     }
 
+    // GET: api/students
     [HttpGet]
     public async Task<IActionResult> GetAllStudents()
     {
@@ -24,7 +25,24 @@ public class StudentsController : ControllerBase
         return Ok(students);
     }
 
+    // GET: api/students/1
+    [HttpGet("{studentId:int}")]
+    public async Task<IActionResult> GetStudentById(int studentId)
+    {
+        var student = await _studentService.GetStudentByIdAsync(studentId);
 
+        if (student is null)
+        {
+            return NotFound(new
+            {
+                message = $"Student with ID {studentId} was not found."
+            });
+        }
+
+        return Ok(student);
+    }
+
+    // POST: api/students
     [HttpPost]
     public async Task<IActionResult> CreateStudent(
         [FromBody] CreateStudentRequest request)
@@ -34,6 +52,7 @@ public class StudentsController : ControllerBase
         return StatusCode(StatusCodes.Status201Created, student);
     }
 
+    // PUT: api/students/1
     [HttpPut("{studentId:int}")]
     public async Task<IActionResult> UpdateStudent(
         int studentId,
@@ -52,5 +71,4 @@ public class StudentsController : ControllerBase
 
         return Ok(student);
     }
-
 }

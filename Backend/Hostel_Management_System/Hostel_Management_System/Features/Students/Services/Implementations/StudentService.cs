@@ -15,6 +15,7 @@ public class StudentService : IStudentService
         _studentRepository = studentRepository;
     }
 
+    // GET: Retrieve all students
     public async Task<List<StudentDto>> GetAllStudentsAsync()
     {
         var students = await _studentRepository.GetAllStudentsAsync();
@@ -31,6 +32,29 @@ public class StudentService : IStudentService
         }).ToList();
     }
 
+    // GET: Retrieve student by ID
+    public async Task<StudentDto?> GetStudentByIdAsync(int studentId)
+    {
+        var student = await _studentRepository.GetStudentByIdAsync(studentId);
+
+        if (student is null)
+        {
+            return null;
+        }
+
+        return new StudentDto
+        {
+            StudentId = student.StudentId,
+            RegisterNumber = student.RegisterNumber,
+            FirstName = student.FirstName,
+            LastName = student.LastName,
+            Email = student.Email,
+            DepartmentName = student.DepartmentName,
+            IsActive = student.IsActive
+        };
+    }
+
+    // POST: Create a new student
     public async Task<StudentDto> CreateStudentAsync(CreateStudentRequest request)
     {
         var student = new Student
@@ -58,6 +82,7 @@ public class StudentService : IStudentService
         };
     }
 
+    // PUT: Update an existing student
     public async Task<StudentDto?> UpdateStudentAsync(
         int studentId,
         UpdateStudentRequest request)
@@ -89,6 +114,4 @@ public class StudentService : IStudentService
             IsActive = student.IsActive
         };
     }
-
-
 }
