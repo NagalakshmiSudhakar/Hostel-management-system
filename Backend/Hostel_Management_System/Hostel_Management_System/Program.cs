@@ -4,6 +4,10 @@ using Hostel_Management_System.Features.Students.Repositories.Implementations;
 using Hostel_Management_System.Features.Students.Repositories.Interfaces;
 using Hostel_Management_System.Features.Students.Services.Implementations;
 using Hostel_Management_System.Features.Students.Services.Interfaces;
+using Hostel_Management_System.Features.Rooms.Repositories.Interfaces;
+using Hostel_Management_System.Features.Rooms.Repositories.Implementations;
+using Hostel_Management_System.Features.Rooms.Services.Interfaces;
+using Hostel_Management_System.Features.Rooms.Services.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +28,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 
 builder.Services.AddScoped<IStudentService, StudentService>();
-
+// Room Dependencies
+builder.Services.AddScoped<IRoomRepository, RoomRepository>();
+builder.Services.AddScoped<IRoomService, RoomService>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AngularPolicy", policy =>

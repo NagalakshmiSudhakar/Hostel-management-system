@@ -25,28 +25,55 @@ export class StudentsListComponent implements OnInit {
     this.loadStudents();
   }
 
+  // Get all students
   loadStudents(): void {
-  this.isLoading = true;
-  this.errorMessage = '';
+    this.isLoading = true;
+    this.errorMessage = '';
 
-  this.studentService.getAllStudents().subscribe({
-    next: (data) => {
-      console.log('Students received:', data);
+    this.studentService.getAllStudents().subscribe({
+      next: (data) => {
+        console.log('Students received:', data);
 
-      this.students = data;
-      this.isLoading = false;
+        this.students = data;
+        this.isLoading = false;
 
-      console.log('Loading:', this.isLoading);
-    },
-    error: (error) => {
-      console.error('API Error:', error);
+        console.log('Loading:', this.isLoading);
+      },
+      error: (error) => {
+        console.error('API Error:', error);
 
-      this.errorMessage = 'Unable to load students.';
-      this.isLoading = false;
-    },
-    complete: () => {
-      console.log('API request completed');
+        this.errorMessage = 'Unable to load students.';
+        this.isLoading = false;
+      },
+      complete: () => {
+        console.log('API request completed');
+      }
+    });
+  }
+
+  // Deactivate student (Soft Delete)
+  deleteStudent(studentId: number): void {
+
+    const confirmDelete = confirm(
+      'Are you sure you want to deactivate this student?'
+    );
+
+    if (!confirmDelete) {
+      return;
     }
-  });
-}
+
+    this.studentService.deactivateStudent(studentId).subscribe({
+      next: (response) => {
+        console.log('Student deactivated:', response);
+
+        // Refresh the student list
+        this.loadStudents();
+      },
+      error: (error) => {
+        console.error('Error deactivating student:', error);
+
+        this.errorMessage = 'Unable to deactivate student.';
+      }
+    });
+  }
 }

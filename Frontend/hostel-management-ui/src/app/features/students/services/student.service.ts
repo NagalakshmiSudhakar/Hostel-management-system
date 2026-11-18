@@ -37,4 +37,9 @@ updateStudent(
     request
   );
 }
+deactivateStudent(studentId: number): Observable<any> {
+  return this.http.delete(
+    `${this.apiUrl}/${studentId}`
+  );
+}
 }

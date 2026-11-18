@@ -12,7 +12,7 @@
 }
 
 @if (errorMessage) {
-  <p>{{ errorMessage }}</p>
+  <p class="error-message">{{ errorMessage }}</p>
 }
 
 @if (!isLoading && !errorMessage) {
@@ -21,7 +21,6 @@
   <table border="1" cellpadding="10">
     <thead>
       <tr>
-        
         <th>ID</th>
         <th>Register Number</th>
         <th>Name</th>
@@ -40,12 +39,28 @@
           <td>{{ student.firstName }} {{ student.lastName }}</td>
           <td>{{ student.email }}</td>
           <td>{{ student.departmentName }}</td>
-          <td>{{ student.isActive ? 'Active' : 'Inactive' }}</td>
+
           <td>
-  <button [routerLink]="['/admin/students/edit', student.studentId]">
-    Edit
-  </button>
-</td>
+            {{ student.isActive ? 'Active' : 'Inactive' }}
+          </td>
+
+          <td>
+            <div class="action-buttons">
+
+              <button
+                class="edit-btn"
+                [routerLink]="['/admin/students/edit', student.studentId]">
+                Edit
+              </button>
+
+              <button
+                class="delete-btn"
+                (click)="deleteStudent(student.studentId)">
+                Delete
+              </button>
+
+            </div>
+          </td>
         </tr>
       }
     </tbody>
