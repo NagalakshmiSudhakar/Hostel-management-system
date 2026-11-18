@@ -71,4 +71,24 @@ public class StudentsController : ControllerBase
 
         return Ok(student);
     }
+
+    // DELETE: api/students/1
+    [HttpDelete("{studentId:int}")]
+    public async Task<IActionResult> DeactivateStudent(int studentId)
+    {
+        var result = await _studentService.DeactivateStudentAsync(studentId);
+
+        if (!result)
+        {
+            return NotFound(new
+            {
+                message = $"Student with ID {studentId} was not found."
+            });
+        }
+
+        return Ok(new
+        {
+            message = "Student deactivated successfully."
+        });
+    }
 }

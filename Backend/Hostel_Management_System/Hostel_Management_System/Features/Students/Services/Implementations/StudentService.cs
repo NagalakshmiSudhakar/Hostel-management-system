@@ -114,4 +114,19 @@ public class StudentService : IStudentService
             IsActive = student.IsActive
         };
     }
+    public async Task<bool> DeactivateStudentAsync(int studentId)
+    {
+        var student = await _studentRepository.GetStudentByIdAsync(studentId);
+
+        if (student is null)
+        {
+            return false;
+        }
+
+        student.IsActive = false;
+
+        await _studentRepository.UpdateStudentAsync(student);
+
+        return true;
+    }
 }

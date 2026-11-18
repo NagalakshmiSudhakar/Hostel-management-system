@@ -18,4 +18,5 @@ public interface IStudentService
     Task<StudentDto?> UpdateStudentAsync(
         int studentId,
         UpdateStudentRequest request);
+    Task<bool> DeactivateStudentAsync(int studentId);
 }
