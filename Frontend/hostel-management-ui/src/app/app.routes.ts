@@ -4,6 +4,7 @@ import { AdminLayoutComponent } from './features/admin/layout/admin-layout/admin
 import { StudentsListComponent } from './features/students/pages/students-list/students-list';
 import { Dashboard } from './features/admin/pages/dashboard/dashboard';
 import { StudentCreateComponent } from './features/students/pages/student-create/student-create';
+import { StudentEditComponent } from './features/students/pages/student-edit/student-edit';
 
 export const routes: Routes = [
   {
@@ -11,9 +12,9 @@ export const routes: Routes = [
     component: AdminLayoutComponent,
     children: [
       {
-  path: 'dashboard',
-  component: Dashboard
-},
+        path: 'dashboard',
+        component: Dashboard
+      },
       {
         path: 'students',
         component: StudentsListComponent
@@ -24,9 +25,13 @@ export const routes: Routes = [
         pathMatch: 'full'
       },
       {
-  path: 'students/create',
-  component: StudentCreateComponent
-},
+         path: 'students/create',
+         component: StudentCreateComponent
+       },
+      {
+        path: 'students/edit/:id',
+        component: StudentEditComponent
+      }
     ]
   },
   {

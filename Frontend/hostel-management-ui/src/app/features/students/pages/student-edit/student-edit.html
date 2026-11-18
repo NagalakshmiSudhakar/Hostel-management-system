@@ -1,0 +1,103 @@
+
+<div class="form-container">
+
+  @if (isLoading) {
+    <p>Loading student details...</p>
+  }
+  @else if (errorMessage) {
+    <p class="error-message">{{ errorMessage }}</p>
+  }
+  @else {
+
+    <div class="form-header">
+      <h2>Edit Student</h2>
+      <p>Update the student's information below.</p>
+    </div>
+
+    <form #studentForm="ngForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label>Register Number</label>
+        <input
+          type="text"
+          name="registerNumber"
+          [(ngModel)]="student.registerNumber"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>First Name</label>
+        <input
+          type="text"
+          name="firstName"
+          [(ngModel)]="student.firstName"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Last Name</label>
+        <input
+          type="text"
+          name="lastName"
+          [(ngModel)]="student.lastName"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="student.email"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Department</label>
+        <input
+          type="text"
+          name="departmentName"
+          [(ngModel)]="student.departmentName"
+          required
+        />
+      </div>
+
+      <div class="form-group checkbox-group">
+        <label>
+          <input
+            type="checkbox"
+            name="isActive"
+            [(ngModel)]="student.isActive"
+          />
+          Active Student
+        </label>
+      </div>
+
+      @if (errorMessage) {
+        <p class="error-message">{{ errorMessage }}</p>
+      }
+
+      <div class="form-actions">
+        <button
+          type="button"
+          class="cancel-btn"
+          routerLink="/admin/students">
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="submit-btn"
+          [disabled]="studentForm.invalid || isSubmitting || isLoading">
+          {{ isSubmitting ? 'Updating...' : 'Update Student' }}
+        </button>
+      </div>
+
+    </form>
+  }
+
+</div>

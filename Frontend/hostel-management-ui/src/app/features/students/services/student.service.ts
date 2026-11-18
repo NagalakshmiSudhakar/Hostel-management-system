@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { Student } from '../../../core/models/student.model';
 import { CreateStudentRequest } from '../../../core/models/create-student-request.model';
+import { UpdateStudentRequest } from '../../../core/models/update-student-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,4 +22,19 @@ export class StudentService {
   createStudent(request: CreateStudentRequest): Observable<Student> {
     return this.http.post<Student>(this.apiUrl, request);
   }
+  // GET: Retrieve one student by ID
+getStudentById(studentId: number): Observable<Student> {
+  return this.http.get<Student>(`${this.apiUrl}/${studentId}`);
+}
+
+// PUT: Update an existing student
+updateStudent(
+  studentId: number,
+  request: UpdateStudentRequest
+): Observable<Student> {
+  return this.http.put<Student>(
+    `${this.apiUrl}/${studentId}`,
+    request
+  );
+}
 }
