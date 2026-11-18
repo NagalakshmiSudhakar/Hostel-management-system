@@ -1,11 +1,14 @@
 ﻿
 using Hostel_Management_System.Features.Students.DTOs;
 using Hostel_Management_System.Features.Students.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace Hostel_Management_System.Controllers;
 
 [ApiController]
+[Authorize(Roles = "Admin")]
 [Route("api/[controller]")]
 public class StudentsController : ControllerBase
 {

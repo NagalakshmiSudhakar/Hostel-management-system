@@ -1,12 +1,14 @@
 ﻿
 using Hostel_Management_System.Features.Rooms.DTOs;
 using Hostel_Management_System.Features.Rooms.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hostel_Management_System.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize(Roles = "Admin")]
 public class RoomsController : ControllerBase
 {
     private readonly IRoomService _roomService;

@@ -10,10 +10,17 @@ import { StudentEditComponent } from './features/students/pages/student-edit/stu
 import { RoomsListComponent } from './features/rooms/pages/rooms-list/rooms-list';
 import { RoomCreate } from './features/rooms/pages/room-create/room-create';
 import { RoomEdit } from './features/rooms/pages/room-edit/room-edit';
+import { Login } from './features/auth/pages/login/login';
+import { authGuard } from './core/guards/auth-guard';
 export const routes: Routes = [
+  {
+    path: 'login',
+    component: Login
+  },
   {
     path: 'admin',
     component: AdminLayoutComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: 'dashboard',
