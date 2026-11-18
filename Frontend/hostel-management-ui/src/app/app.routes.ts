@@ -1,3 +1,4 @@
+
 import { Routes } from '@angular/router';
 
 import { AdminLayoutComponent } from './features/admin/layout/admin-layout/admin-layout';
@@ -6,6 +7,9 @@ import { Dashboard } from './features/admin/pages/dashboard/dashboard';
 import { StudentCreateComponent } from './features/students/pages/student-create/student-create';
 import { StudentEditComponent } from './features/students/pages/student-edit/student-edit';
 
+import { RoomsListComponent } from './features/rooms/pages/rooms-list/rooms-list';
+import { RoomCreate } from './features/rooms/pages/room-create/room-create';
+import { RoomEdit } from './features/rooms/pages/room-edit/room-edit';
 export const routes: Routes = [
   {
     path: 'admin',
@@ -16,21 +20,32 @@ export const routes: Routes = [
         component: Dashboard
       },
       {
-        path: 'students',
-        component: StudentsListComponent
+        path: 'students/create',
+        component: StudentCreateComponent
       },
+      {
+        path: 'students/edit/:id',
+        component: StudentEditComponent
+      },
+      {
+        path: 'students',
+        component: StudentsListComponent,
+        pathMatch: 'full'
+      },
+      {
+  path: 'rooms/create',
+  component: RoomCreate
+},
+      {
+        path: 'rooms',
+        component: RoomsListComponent,
+        pathMatch: 'full'
+      },
+      { path: 'rooms/edit/:id', component: RoomEdit },
       {
         path: '',
         redirectTo: 'students',
         pathMatch: 'full'
-      },
-      {
-         path: 'students/create',
-         component: StudentCreateComponent
-       },
-      {
-        path: 'students/edit/:id',
-        component: StudentEditComponent
       }
     ]
   },

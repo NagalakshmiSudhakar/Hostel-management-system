@@ -1,0 +1,93 @@
+
+<div class="form-container">
+
+  <div class="form-header">
+    <h2>Edit Room</h2>
+    <p>Update the room details below.</p>
+  </div>
+
+  @if (isLoading) {
+    <p class="loading-message">Loading room details...</p>
+  } @else {
+
+    <form #roomForm="ngForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label>Room Number</label>
+        <input
+          type="text"
+          name="roomNumber"
+          [(ngModel)]="room.roomNumber"
+          required
+          placeholder="Example: A101"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Floor Number</label>
+        <input
+          type="number"
+          name="floorNumber"
+          [(ngModel)]="room.floorNumber"
+          min="0"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Room Type</label>
+        <select
+          name="roomType"
+          [(ngModel)]="room.roomType"
+          required
+        >
+          <option value="AC">AC</option>
+          <option value="Non-AC">Non-AC</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Room Capacity</label>
+        <input
+          type="number"
+          name="capacity"
+          [(ngModel)]="room.capacity"
+          min="1"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Room Status</label>
+        <select name="isActive" [(ngModel)]="room.isActive">
+          <option [ngValue]="true">Active</option>
+          <option [ngValue]="false">Inactive</option>
+        </select>
+      </div>
+
+      @if (errorMessage) {
+        <p class="error-message">{{ errorMessage }}</p>
+      }
+
+      <div class="form-actions">
+        <button
+          type="button"
+          class="cancel-btn"
+          routerLink="/admin/rooms"
+        >
+          Cancel
+        </button>
+
+        <button
+          type="submit"
+          class="submit-btn"
+          [disabled]="roomForm.invalid || isSubmitting"
+        >
+          {{ isSubmitting ? 'Updating...' : 'Update Room' }}
+        </button>
+      </div>
+
+    </form>
+  }
+
+</div>
